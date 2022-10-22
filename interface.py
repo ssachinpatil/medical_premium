@@ -10,10 +10,10 @@ def sachin():
 def result():
     Input=request.form
     print('input',Input)
-    age=Input['age']
+    age=int(Input['age'])
     sex=Input['sex']
-    bmi=Input['bmi']
-    children=Input['children']
+    bmi=eval(Input['bmi'])
+    children=int(Input['children'])
     smoker=Input['smoker']
     region=Input['region']
     med=medical(age,sex,bmi,children,smoker,region)
