@@ -3,6 +3,11 @@ import numpy as np
 import pickle
 import json
 
+try:
+    import config
+except:
+    pass
+
 
 
 class medical():
@@ -14,13 +19,21 @@ class medical():
         self.smoker=smoker
         self.region="region_"+region
     def load_model(self):
+        try:
             
-        with open ('Medical.pkl','rb') as f:
-            self.model=pickle.load(f)
-    
-
-        with open ('data.json','r') as m:
-             self.data=json.load(m)
+            with open(config.MODEL_FILE_PATH,"rb") as f:
+                self.model=pickle.load(f)
+                
+            with open(config.JSON_FILE_PATH,"r") as m:
+                self.data=json.load(m)
+         
+        except:
+            
+            with open ('Medical.pkl','rb') as f:
+                self.model=pickle.load(f)
+   
+            with open ('data.json','r') as m:
+                self.data=json.load(m)
    
     def get_predicted(self):
 
